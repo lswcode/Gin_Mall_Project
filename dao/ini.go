@@ -1,6 +1,7 @@
 package dao
 
 import (
+	"context"
 	"time"
 
 	"fmt"
@@ -77,4 +78,9 @@ func Database(connRead, connWrite string) {
 	}
 	fmt.Println("register table success")
 
+}
+
+func NewDBClient(ctx context.Context) *gorm.DB {
+	db := _db
+	return db.WithContext(ctx)
 }
